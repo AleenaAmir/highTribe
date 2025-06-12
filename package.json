@@ -23,8 +23,6 @@
 		"check:fix": "biome check --fix .",
 		"check:unused": "knip --max-issues 1",
 		"check:unused:fix": "knip --fix",
-		"typegen": "remix typegen",
-		"postinstall": "pnpm run typegen",
 		"db:generate": "drizzle-kit generate",
 		"db:migrate": "drizzle-kit migrate",
 		"db:push": "drizzle-kit push",

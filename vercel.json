@@ -3,5 +3,21 @@
 	"devCommand": "pnpm run dev",
 	"framework": "vite",
 	"installCommand": "pnpm install",
-	"regions": ["iad1"]
+	"regions": ["iad1"],
+	"builds": [
+		{
+			"src": "build/server/index.js",
+			"use": "@vercel/node"
+		}
+	],
+	"routes": [
+		{
+			"src": "/build/(.*)",
+			"dest": "/build/$1"
+		},
+		{
+			"src": "/(.*)",
+			"dest": "/build/server/index.js"
+		}
+	]
 }

@@ -3,11 +3,5 @@
 	"devCommand": "remix dev",
 	"framework": "remix",
 	"installCommand": "npm install",
-	"regions": ["iad1"],
-	"functions": {
-		"app/routes/api.*.ts": {
-			"memory": 1024,
-			"maxDuration": 10
-		}
-	}
+	"regions": ["iad1"]
 }

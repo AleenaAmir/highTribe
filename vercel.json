@@ -1,7 +1,7 @@
 {
-	"buildCommand": "remix build",
-	"devCommand": "remix dev",
-	"framework": "remix",
+	"buildCommand": "pnpm run build",
+	"devCommand": "pnpm run dev",
+	"framework": "vite",
 	"installCommand": "pnpm install",
 	"regions": ["iad1"]
 }

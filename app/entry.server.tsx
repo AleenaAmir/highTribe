@@ -1,11 +1,10 @@
 import { PassThrough } from "node:stream"
-import { createReadableStreamFromReadable } from "@remix-run/node"
-import type { AppLoadContext, EntryContext } from "@remix-run/node"
-import { RemixServer } from "@remix-run/react"
+import { createReadableStreamFromReadable } from "@react-router/node"
 import { createInstance } from "i18next"
 import { isbot } from "isbot"
 import { renderToPipeableStream } from "react-dom/server"
 import { I18nextProvider, initReactI18next } from "react-i18next"
+import { type AppLoadContext, type EntryContext, ServerRouter } from "react-router"
 import i18n from "./localization/i18n" // your i18n configuration file
 import i18nextOpts from "./localization/i18n.server"
 import { resources } from "./localization/resource"
@@ -30,8 +29,8 @@ export default async function handleRequest(
 		.use(initReactI18next) // Tell our instance to use react-i18next
 		.init({
 			...i18n, // spread the configuration
-			lng: lng as string, // The locale we detected above
-			ns: ns as string[], // The namespaces the routes about to render wants to use
+			lng, // The locale we detected above
+			ns, // The namespaces the routes about to render wants to use
 			resources,
 		})
 
@@ -40,7 +39,7 @@ export default async function handleRequest(
 
 		const { pipe, abort } = renderToPipeableStream(
 			<I18nextProvider i18n={instance}>
-				<RemixServer context={context} url={request.url} />
+				<ServerRouter context={context} url={request.url} />
 			</I18nextProvider>,
 			{
 				[callbackName]: () => {

@@ -7,14 +7,6 @@
 	"outputDirectory": "build",
 	"rewrites": [
 		{
-			"source": "/build/(.*)",
-			"destination": "/build/$1"
-		},
-		{
-			"source": "/assets/(.*)",
-			"destination": "/assets/$1"
-		},
-		{
 			"source": "/(.*)",
 			"destination": "/build/server/index.js"
 		}

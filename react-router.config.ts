@@ -6,5 +6,4 @@ export default {
 		unstable_splitRouteModules: true,
 		unstable_optimizeDeps: true,
 	},
-	serverModuleFormat: "esm",
 } satisfies Config

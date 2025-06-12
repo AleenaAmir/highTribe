@@ -4,20 +4,39 @@
 	"framework": "vite",
 	"installCommand": "pnpm install",
 	"regions": ["iad1"],
-	"builds": [
+	"outputDirectory": "build",
+	"rewrites": [
 		{
-			"src": "build/server/index.js",
-			"use": "@vercel/node"
-		}
-	],
-	"routes": [
-		{
-			"src": "/build/(.*)",
-			"dest": "/build/$1"
+			"source": "/build/(.*)",
+			"destination": "/build/$1"
 		},
 		{
-			"src": "/(.*)",
-			"dest": "/build/server/index.js"
+			"source": "/assets/(.*)",
+			"destination": "/assets/$1"
+		},
+		{
+			"source": "/(.*)",
+			"destination": "/build/server/index.js"
+		}
+	],
+	"headers": [
+		{
+			"source": "/build/(.*)",
+			"headers": [
+				{
+					"key": "Cache-Control",
+					"value": "public, max-age=31536000, immutable"
+				}
+			]
+		},
+		{
+			"source": "/assets/(.*)",
+			"headers": [
+				{
+					"key": "Cache-Control",
+					"value": "public, max-age=31536000, immutable"
+				}
+			]
 		}
 	]
 }

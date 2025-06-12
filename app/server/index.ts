@@ -5,8 +5,9 @@ import { getLoadContext } from "./context"
 
 export default await createHonoServer({
 	configure(server) {
+		// i18n middleware
 		server.use("*", i18next(i18nextOpts))
 	},
-	defaultLogger: false,
+	defaultLogger: true, // Enable logging for debugging
 	getLoadContext,
 })
